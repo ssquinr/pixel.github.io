@@ -1,0 +1,73 @@
+body {
+  font-family: 'Sarabun', sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  background: #ccc;
+  border: none;
+}
+
+button {
+  background: #bbb;
+  padding: 12px 20px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.display-balance {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#historySection {
+  margin-top: 30px;
+  text-align: left;
+}
+
+#search {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#historyList {
+  list-style: none;
+  padding-left: 0;
+}
+
+#historyList li {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.hidden {
+  display: none;
+}
