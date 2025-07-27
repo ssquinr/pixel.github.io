@@ -7,19 +7,24 @@ const historyList = document.getElementById("historyList");
 const searchInput = document.getElementById("search");
 const historySection = document.getElementById("historySection");
 const showHistoryBtn = document.getElementById("showHistory");
+const personSelect = document.getElementById("person");
 
-// เรียกข้อมูลจาก localStorage
 let balance = parseFloat(localStorage.getItem("balance")) || 0;
 let history = JSON.parse(localStorage.getItem("history")) || [];
 
 updateDisplay();
 
-// กด "ส่ง"
 form.addEventListener("submit", function (e) {
   e.preventDefault();
+  const person = personSelect.value;
   const name = nameInput.value.trim();
   const add = parseFloat(addInput.value) || 0;
   const subtract = parseFloat(subtractInput.value) || 0;
+
+  if (person === "None") {
+    alert("กรุณาเลือกชื่อคน");
+    return;
+  }
 
   if (!name || (add === 0 && subtract === 0)) {
     alert("กรุณากรอกชื่อและจำนวนเงินที่ถูกต้อง");
@@ -29,29 +34,25 @@ form.addEventListener("submit", function (e) {
   const net = add - subtract;
   balance += net;
 
-  // บันทึกประวัติ
   history.push({
+    person, // เพิ่มชื่อคนในประวัติ
     name,
     amount: net,
     date: new Date().toLocaleString()
   });
 
-  // เก็บไว้ใน localStorage
   localStorage.setItem("balance", balance);
   localStorage.setItem("history", JSON.stringify(history));
 
-  // อัปเดตหน้าจอ
   updateDisplay();
   form.reset();
 });
 
-// กด "ประวัติ"
 showHistoryBtn.addEventListener("click", () => {
   historySection.classList.toggle("hidden");
   renderHistory();
 });
 
-// ค้นหาชื่อ
 searchInput.addEventListener("input", renderHistory);
 
 function updateDisplay() {
@@ -68,7 +69,8 @@ function renderHistory() {
     .forEach(item => {
       const li = document.createElement("li");
       const sign = item.amount > 0 ? "+" : "-";
-      li.textContent = `[${item.date}] ${item.name}: ${sign}${Math.abs(item.amount).toLocaleString()} บาท`;
+      li.textContent = `[${item.date}] (${item.person}) ${item.name}: ${sign}${Math.abs(item.amount).toLocaleString()} บาท`;
       historyList.appendChild(li);
     });
 }
+
