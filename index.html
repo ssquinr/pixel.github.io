@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>จำนวนเงิน</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    form select#person {
+      width: 90%;
+      max-width: 350px;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      box-sizing: border-box;
+      display: block;
+      background: #fff;
+      appearance: none;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -15,6 +30,13 @@
     </div>
 
     <form id="form">
+      <select id="person" required>
+        <option value="None" selected>None</option>
+        <option value="ซัน">ซัน</option>
+        <option value="อาร์ม">อาร์ม</option>
+        <option value="เฟลอร์">เฟลอร์</option>
+        <option value="กาย">กาย</option>
+      </select>
       <input type="text" id="name" placeholder="ชื่อประวัติ" required />
       <input type="number" id="add" placeholder="ใส่เงินเพื่อเพิ่มเลข" />
       <input type="number" id="subtract" placeholder="ใส่เงินเพื่อลดเลข" />
